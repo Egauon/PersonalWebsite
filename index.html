@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Preview - Braeden Songer (Revised Black)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+
+        .logos {
+            /* Correct property is 'transform', not 'translation' */
+            transform: scale(1); 
+            
+            /* You must specify WHICH property to transition (transform) */
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .logos:hover {
+            /* Correct property is 'transform' */
+            transform: scale(1.1);
+        }
+
+        :root {
+            --primary-color: #3f6ce4; /* A shade of blue for links/buttons */
+            --dark-bg: #000000; /* CHANGED: Pure Black */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        /* --- Header/Navbar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            border-bottom: 1px solid #eee;
+        }
+
+        .navbar-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-logo-icon {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+
+        .navbar-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .navbar-actions button {
+            padding: 8px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .sign-in {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        .sign-up {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 100px 5% 0; /* Extra padding top/bottom */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80vh;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 50%;
+            padding-bottom: 100px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .hero-content .explore-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .hero-content .explore-btn:hover {
+            background-color: #355ac8;
+        }
+
+        .hero-illustration-placeholder {
+            width: 50%;
+            height: 600px;
+            position: relative;
+            /* Changed to use pure black */
+            background: linear-gradient(135deg, #111111, var(--dark-bg)); 
+        }
+
+        /* The custom wave separator (Black section to White section) */
+        .wave-separator {
+            width: 100%;
+            height: 100px;
+            background-color: white; /* The color of the section BELOW the wave */
+            position: relative;
+            margin-top: -1px;
+            overflow: hidden;
+        }
+
+        .wave-separator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background-color: var(--dark-bg); /* The color of the section ABOVE the wave */
+            border-radius: 0 0 50% 50% / 0 0 100px 100px;
+            transform: translateY(-50%);
+        }
+        
+        /* --- Features Section (3 columns) --- */
+        .features-section {
+            padding: 60px 5%;
+            text-align: center;
+            background-color: var(--dark-bg);
+        }
+        
+        .features-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-item {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-item h3 {
+            margin-top: 15px;
+            font-size: 1.4em;
+            color: var(--text-color);
+        }
+
+        .feature-item p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            color: var(--primary-color);
+        }
+
+        /* --- Framework Section (Background now White) --- */
+        .framework-section-bg {
+            background-color: white; /* CHANGED: White background */
+            padding-top: 100px; 
+            color: var(--text-color); /* Text color changed to match white background */
+        }
+
+        /* Wave separator from White to White (since the framework section is white, we don't need a wave here, but we'll keep the structure and make it flat, or use a new separator to go back to black after the framework section) */
+        .framework-wave-separator {
+            /* This wave is now coming from the features section (white) and separating it from the framework section (white). We'll make it a flat connector for consistency, or simply remove the top padding and separator for a seamless look. Let's remove the top wave separator and the padding */
+            display: none; 
+        }
+
+        .framework-section-content {
+            padding: 40px 5% 80px;
+            text-align: center;
+        }
+
+        .framework-section-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .framework-section-content p {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            opacity: 0.8;
+            color: #666;
+        }
+
+        .framework-illustration-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .framework-illustration-item {
+            flex: 1;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .framework-illustration-item h3 {
+             font-size: 1.4em;
+             margin-top: 15px;
+        }
+
+        .framework-illustration-item p {
+            font-size: 1em;
+            color: #666;
+            margin: 10px 0 0 0;
+            text-align: left;
+        }
+
+        .placeholder-image {
+            height: 150px;
+            /* Changed placeholder color to stand out on white */
+            background-color: #f0f0f0; 
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            color: #999;
+        }
+        
+        /* New Wave Separator: White to Black (After Framework Section) */
+        .white-to-black-wave-separator {
+            width: 100%;
+            height: 100px;
+            background-color: var(--dark-bg); /* The color of the section BELOW the wave (Projects is next, but we need the black wave to be the bottom curve) */
+            position: relative;
+            overflow: hidden;
+            margin-bottom: -1px;
+        }
+
+        .white-to-black-wave-separator::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background-color: white; /* The color of the section ABOVE the wave (Framework) */
+            border-radius: 50% 50% 0 0 / 100px 100px 0 0;
+            transform: translateY(50%);
+        }
+        
+        /* --- Projects Section --- */
+        .projects-section {
+            /* We will keep this section white, so we need a wave coming from white to white */
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .projects-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+        
+        .projects-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .project-logo {
+            font-size: 3em;
+            font-weight: bold;
+            opacity: 0.8;
+        }
+
+        /* Using color approximations from the video */
+        .logo-mouse { color: #888; }
+        .logo-easyjs { color: #f0db4f; }
+        .logo-uncover { color: #e91e63; }
+
+        /* --- Call to Action (CTA) Section --- */
+        .cta-section {
+            padding: 80px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--light-bg);
+            margin-top: 80px;
+        }
+
+        .cta-content {
+            max-width: 50%;
+            text-align: left;
+        }
+
+        .cta-content h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .cta-content p {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .cta-illustration-placeholder {
+            width: 40%;
+            height: 350px;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        /* --- Footer/Final CTA (Now pure black) --- */
+        .final-cta-section {
+            background-color: var(--dark-bg); /* CHANGED: Pure Black */
+            color: white;
+            padding: 100px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .final-cta-text {
+            max-width: 45%;
+        }
+
+        .final-cta-text .logo {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .final-cta-text h2 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .final-cta-text p {
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        .app-store-btn {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-weight: bold;
+            /* Changed border color for visibility on black, though background is black already */
+            border: 1px solid #333; 
+        }
+
+        .app-store-btn i {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            /* Changed to pure black */
+            background-color: #111; 
+            border: 15px solid #000;
+            border-radius: 40px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); /* Darker shadow for black bg */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            color: #ccc;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .phone-mockup-screen {
+            background-color: white;
+            border-radius: 20px;
+            width: 90%;
+            height: 90%;
+            color: var(--text-color);
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .phone-mockup-screen h4 { margin: 0 0 10px 0; color: #666; }
+        .phone-mockup-screen .amount { font-size: 2em; font-weight: bold; margin: 20px 0; }
+        .phone-mockup-screen .pay-btn { background-color: var(--primary-color); color: white; padding: 10px; border-radius: 5px; width: 100%; margin-top: 30px; }
+        .phone-mockup-screen .selected-card { border: 1px solid #ddd; padding: 10px; border-radius: 5px; text-align: left; }
+
+        /* Media Queries (Basic) */
+        @media (max-width: 992px) {
+            .hero-section {
+                flex-direction: column;
+                padding-top: 50px;
+                min-height: auto;
+            }
+            .hero-content, .hero-illustration-placeholder {
+                max-width: 100%;
+                width: 100%;
+                text-align: center;
+                padding-bottom: 50px;
+            }
+            .hero-illustration-placeholder {
+                height: 300px;
+            }
+            .features-grid, .framework-illustration-grid {
+                flex-direction: column;
+            }
+            .cta-section, .final-cta-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cta-content, .final-cta-text, .phone-mockup {
+                max-width: 100%;
+                width: 100%;
+                margin-bottom: 40px;
+            }
+            .projects-logos {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#" class="navbar-logo">
+            <span class="navbar-logo-icon">H</span> Startup
+        </a>
+        <nav class="navbar-links">
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Blog</a>
+            <a href="#">Prices</a>
+            <a href="#">Mail</a>
+        </nav>
+        <div class="navbar-actions">
+            <button class="sign-in">Sign In</button>
+            <button class="sign-up">Sign Up</button>
+        </div>
+    </header>
+    <script>
+
+
+        
+
+        function showcase(ele){
+            if(ele == 'mouseplus'){
+                window.location.href = ""
+            }
+            if(ele == 'easyjs'){
+                window.location.href = "https://egauon.github.io/easyjs/"
+            }
+            if(ele == 'uncover'){
+                window.location.href = "https://run.plnkr.co/preview/cmidl9b93000d357689jqp2g0/"
+            }
+        }
+    </script>
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Braeden Songer</h1>
+            <p>Bachelors in Computer Science</p>
+            <a href="#" class="explore-btn">Explore Experience</a>
+        </div>
+        <div class="hero-illustration-placeholder">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                <p>Abstract Illustration Placeholder</p>
+                <p style="font-size: 0.8em; opacity: 0.5;">(Colorful graphic of a person and shapes)</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fa-solid fa-certificate feature-icon"></i>
+                <h3>Tensorflow Certified</h3>
+                <p>Through Google's Tensorflow Deep Learning Certification Program</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-medal feature-icon"></i>
+                <h3>Best In Show</h3>
+                <p>Team Awarded "Best In Show" by Consortium for Computer Sciences in Colleges</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-leaf feature-icon"></i>
+                <h3>Clean Vibes</h3>
+                <p>Volunteer for dedicated on-site waste management through Clean Vibes Program</p>
+            </div>
+        </div>
+    </section>
+<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
+
+<div class="image-container-wave">
+<img id="wave" src="wave_separator.png" style="width:150%;z-index:100">
+<img id="wave2" src="wave_separator.png" style="width:150%;position:absolute;top:10%;opacity:.5;left:-20%;z-index:1;">
+
+</div>
+
+<style>
+.image-container-wave {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+#wave2 {
+    position: absolute;
+    top: 10%;
+    left: -60%;
+    opacity: .5;
+    width: 150%;
+    z-index: 1;
+    will-change: transform; /* makes it smooth */
+    transform: translateX(0px);
+}
+
+</style>
+
+<script>
+//     const wave2 = document.getElementById("wave2");
+//     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+// if (isMobile) {
+//   console.log("Mobile device detected");
+// } else {
+//       window.addEventListener("scroll", () => {
+//         scroll = window.scrollY;
+//         console.log(scroll)
+//         // Move the wave exactly with scroll speed
+//         // You can change 0.5 to adjust how much it moves
+//         movement = scroll * .1; 
+//         if(movement > 100){
+
+//         }else{
+//             wave2.style.transform = "translateX(" + movement + "px)";
+//         }
+        
+//     });
+// }
+
+</script>
+
+    <section class="framework-section-bg">
+        <div class="framework-section-content">
+            <h2>Research Areas</h2>
+            <p>There are many ways to develop an understanding of how things work. The best way is through taking action. </p>
+            
+            <div class="framework-illustration-grid">
+                <div class="framework-illustration-item">
+                    <div class="placeholder-image"><i class="fas fa-tools"></i> Placeholder Graphic 1</div>
+                    <h3>AI Robotics</h3>
+                    <p>Collaboration with the University of Missouri's College of Health Sciences researching low-budget, accessible AI robotics and its usefulness for disabled persons.</p>
+                </div>
+                <div class="framework-illustration-item">
+                    <div class="placeholder-image"><i class="fas fa-laptop-code"></i> Placeholder Graphic 2</div>
+                    <h3>Web Development</h3>
+                    <p>Multi-Course instruction on web development and user interface design with an emphasis on natural path-planning and user satisfaction</p>
+                </div>
+                <div class="framework-illustration-item">
+                    <div class="placeholder-image"><i class="fas fa-paint-brush"></i> Placeholder Graphic 3</div>
+                    <h3>Image Processing</h3>
+                    <p>Helping mobile robots to understand surroundings using Hough transforms and deriving distance through monocular vision</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="projects-section">
+        <h2>Projects</h2>
+        <div class="projects-logos">
+            <img class="logos" id="mouseplus" src="mouseplus.png" style="width:30%;" onclick="showcase('mouseplus')">
+            <img class="logos" id="easyjs" src="easyjs.png" style="width:30%;" onclick="showcase('easyjs')">
+            <img class="logos" id="uncover" src="uncover.png" style="width:30%;" onclick="showcase('uncover')">
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Let's do it together. We could create anything.</h2>
+            <p>Start growing in half the time with an all-in-one website builder - no more long hours spent on the boring stuff!</p>
+        </div>
+        <div class="cta-illustration-placeholder">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+                <p>Abstract Illustration Placeholder</p>
+                <p style="font-size: 0.8em; opacity: 0.5;">(Colorful graphic of hands working)</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta-section">
+        <div class="final-cta-text">
+            <div class="logo">H</div>
+            <h2>Get your idea out there in the way you want it</h2>
+            <p>Interested in working together? Email me and we can start making something amazing!</p>
+            <a href="#" class="app-store-btn">
+                <i class="fa-regular fa-envelope"></i> Send an Email
+            </a>
+        </div>
+        <div class="phone-mockup">
+            <div class="phone-mockup-screen">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <span>9:41</span>
+                    <button style="background: none; border: none; color: #888;">Cancel</button>
+                </div>
+                <hr style="border: 0; border-top: 1px solid #eee;">
+                <h4>Payments</h4>
+                <input type="text" placeholder="Enter phone number" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+                <p style="font-size: 0.9em; color: #666; text-align: left; margin-top: 20px;">SELECTED CARD</p>
+                <div class="selected-card">
+                    Nord Bank <span style="float: right;">$5,670.00</span><br>
+                    <span style="font-size: 0.8em; color: #888;">**** **** **** 7882</span>
+                </div>
+                <p style="font-size: 0.9em; color: #666; text-align: left; margin-top: 20px;">AMOUNT</p>
+                <div class="amount">$0.00</div>
+                <div class="pay-btn">Pay</div>
+                <p style="font-size: 0.7em; color: #aaa; margin-top: 10px;">By clicking the button you agree to the offer</p>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
